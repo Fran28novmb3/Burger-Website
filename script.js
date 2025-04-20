@@ -700,3 +700,98 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// Contact Page Style
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contactForm");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const messageError = document.getElementById("messageError");
+  const submissionMessage = document.getElementById("submissionMessage");
+
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  function validateForm() {
+    let isValid = true;
+
+    if (!nameInput.value.trim()) {
+      nameError.textContent = "Please enter your name.";
+      isValid = false;
+    } else {
+      nameError.textContent = "";
+    }
+
+    if (!emailInput.value.trim()) {
+      emailError.textContent = "Please enter your email address.";
+      isValid = false;
+    } else if (!isValidEmail(emailInput.value.trim())) {
+      emailError.textContent = "Please enter a valid email address.";
+      isValid = false;
+    } else {
+      emailError.textContent = "";
+    }
+
+    if (!messageInput.value.trim()) {
+      messageError.textContent = "Please enter your message.";
+      isValid = false;
+    } else {
+      messageError.textContent = "";
+    }
+
+    return isValid;
+  }
+
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    submissionMessage.textContent = "";
+
+    if (validateForm()) {
+      console.log("Form submitted:", {
+        name: nameInput.value,
+        email: emailInput.value,
+        subject: document.getElementById("subject").value,
+        message: messageInput.value,
+      });
+
+      submissionMessage.textContent =
+        "Your message has been sent successfully!";
+      submissionMessage.className = "submission-message success";
+      contactForm.reset();
+    } else {
+      submissionMessage.textContent = "Please correct the errors in the form.";
+      submissionMessage.className = "submission-message error";
+    }
+  });
+
+  nameInput.addEventListener("input", () => {
+    if (!nameInput.value.trim()) {
+      nameError.textContent = "Please enter your name.";
+    } else {
+      nameError.textContent = "";
+    }
+  });
+
+  emailInput.addEventListener("input", () => {
+    if (!emailInput.value.trim()) {
+      emailError.textContent = "Please enter your email address.";
+    } else if (!isValidEmail(emailInput.value.trim())) {
+      emailError.textContent = "Please enter a valid email address.";
+    } else {
+      emailError.textContent = "";
+    }
+  });
+
+  messageInput.addEventListener("input", () => {
+    if (!messageInput.value.trim()) {
+      messageError.textContent = "Please enter your message.";
+    } else {
+      messageError.textContent = "";
+    }
+  });
+});
