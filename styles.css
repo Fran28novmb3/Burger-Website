@@ -966,3 +966,146 @@ a:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* Specials Page Style */
+.specials-page {
+  padding-top: 80px;
+}
+
+.specials-hero {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  text-align: center;
+  padding: 80px 0;
+}
+
+.specials-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.specials-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.specials-items {
+  padding: 60px 0;
+}
+
+.specials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+.special-card {
+  background-color: var(--white-color);
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.special-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.special-image-wrapper {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.special-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.special-card:hover .special-image-wrapper img {
+  transform: scale(1.05);
+}
+
+.special-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.special-name {
+  font-size: 1.8rem;
+  color: var(--heading-color);
+  margin-bottom: 8px;
+}
+
+.special-description {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.special-price-like {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.special-price {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.like-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
+}
+
+.like-button:hover,
+.like-button.liked {
+  color: var(--primary-color);
+}
+
+.like-button i {
+  font-size: 1.5rem;
+}
+
+.limited-time {
+  background-color: #ff4d4d;
+  color: var(--white-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  align-self: flex-start;
+  margin-bottom: 10px;
+}
+
+.countdown-timer {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .specials-grid {
+    grid-template-columns: 1fr;
+  }
+}

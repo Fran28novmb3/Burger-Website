@@ -429,3 +429,141 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 });
+
+// Specials Page Script
+document.addEventListener("DOMContentLoaded", () => {
+  const specialsGrid = document.getElementById("specials-grid");
+
+  // Sample specials data (replace with your actual daily specials)
+  const todaySpecialsData = [
+    {
+      id: 101,
+      name: "Double Trouble Burger",
+      description:
+        "Two juicy beef patties, double cheese, crispy bacon, and our signature sauce.",
+      price: 10.99,
+      image: "assets/Specials-images/food-1.jpg",
+      likes: 15,
+      endTime: "2025-04-12T20:00:00",
+    },
+    {
+      id: 102,
+      name: "Garlic Parmesan Fries",
+      description:
+        "Our classic fries tossed in garlic butter and grated Parmesan cheese.",
+      price: 4.99,
+      image: "assets/Specials-images/food-2.jpg",
+      likes: 22,
+      endTime: null,
+    },
+    {
+      id: 103,
+      name: "Mango Tango Shake",
+      description: "A refreshing blend of mango, yogurt, and a hint of lime.",
+      price: 5.99,
+      image: "assets/Specials-images/food-3.jpg",
+      likes: 8,
+      endTime: "2025-04-13T12:00:00",
+    },
+    {
+      id: 104,
+      name: "Spicy BBQ Wings (6 pcs)",
+      description:
+        "Crispy chicken wings coated in our homemade spicy BBQ sauce.",
+      price: 7.49,
+      image: "assets/Specials-images/food-4.jpg",
+      likes: 18,
+      endTime: null,
+    },
+  ];
+
+  function displaySpecials(specials) {
+    specialsGrid.innerHTML = "";
+    specials.forEach((special) => {
+      const specialCard = document.createElement("div");
+      specialCard.classList.add("special-card");
+      specialCard.innerHTML = `
+                <div class="special-image-wrapper">
+                    <img src="${special.image}" alt="${special.name}">
+                </div>
+                <div class="special-details">
+                    <span class="limited-time">Limited Time</span>
+                    <h3 class="special-name">${special.name}</h3>
+                    <p class="special-description">${special.description}</p>
+                    <div class="special-price-like">
+                        <span class="special-price">$${special.price.toFixed(
+                          2
+                        )}</span>
+                        <button class="like-button" data-special-id="${
+                          special.id
+                        }">
+                            <i class="ri-heart-line"></i> <span>${
+                              special.likes
+                            }</span>
+                        </button>
+                    </div>
+                    ${
+                      special.endTime
+                        ? `<p class="countdown-timer" data-end-time="${special.endTime}" id="countdown-${special.id}"></p>`
+                        : ""
+                    }
+                </div>
+            `;
+      specialsGrid.appendChild(specialCard);
+    });
+
+    addLikeButtonListeners();
+    startTimers();
+  }
+
+  function addLikeButtonListeners() {
+    const likeButtons = document.querySelectorAll(".like-button");
+    likeButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const specialId = parseInt(this.dataset.specialId);
+        const special = todaySpecialsData.find((s) => s.id === specialId);
+        if (special) {
+          special.likes++;
+          this.querySelector("span").textContent = special.likes;
+          this.classList.add("liked");
+        }
+      });
+    });
+  }
+
+  function startTimers() {
+    const timers = document.querySelectorAll(".countdown-timer");
+    timers.forEach((timer) => {
+      const endTime = new Date(timer.dataset.endTime).getTime();
+      const specialId = timer.id.split("-")[1];
+
+      const interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = endTime - now;
+
+        if (distance < 0) {
+          clearInterval(interval);
+          timer.textContent = "Offer Expired!";
+          const likeButton = document.querySelector(
+            `.like-button[data-special-id="${specialId}"]`
+          );
+          if (likeButton) {
+            likeButton.disabled = true;
+            likeButton.classList.add("disabled");
+          }
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        timer.textContent = `Ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }, 1000);
+    });
+  }
+  displaySpecials(todaySpecialsData);
+});
