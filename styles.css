@@ -581,3 +581,50 @@ a:hover {
   background-color: var(--primary-color);
   color: var(--white-color);
 }
+
+/* CTA Section */
+.cta-section {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cta-button {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  animation: pulse 1.5s infinite alternate; /* More pronounced pulse */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cta-button:hover {
+  background-color: var(--accent-dark-color);
+  color: var(--white-color);
+}

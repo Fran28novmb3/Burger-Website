@@ -211,3 +211,10 @@ ScrollReveal().reveal(".about-content", {
   origin: "right",
   delay: 500,
 });
+
+// CTA Section
+ScrollReveal().reveal(".cta-content", {
+  ...scrollRevealOption,
+  scale: 0.9,
+  delay: 300,
+});
