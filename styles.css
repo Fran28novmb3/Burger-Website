@@ -1,0 +1,126 @@
+/* General Styles */
+:root {
+  --primary-color: #e5771f;
+  --secondary-color: #333;
+  --accent-color: #f8b600;
+  --accent-dark-color: #e0a500;
+  --white-color: #fff;
+  --light-gray: #f4f4f4;
+  --text-color: #444;
+  --text-secondary: #777;
+  --heading-color: #222;
+  --border-color: #ddd;
+  --transition: all 0.3s ease-in-out;
+  --container-width: 1200px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1.6;
+  background-color: var(--white-color);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-weight: 600;
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-padding {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.bg-light {
+  background-color: var(--light-gray);
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.primary-button:hover {
+  background-color: #d16a1a;
+}
+
+.secondary-button {
+  background-color: var(--light-gray);
+  color: var(--secondary-color);
+}
+
+.secondary-button:hover {
+  background-color: #e0e0e0;
+}
+
+.tertiary-button {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+}
+
+.tertiary-button:hover {
+  background-color: var(--accent-dark-color);
+  color: var(--white-color);
+}
+
+.read-more {
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
