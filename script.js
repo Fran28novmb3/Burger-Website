@@ -143,3 +143,38 @@ ScrollReveal().reveal(".build-preview", {
   origin: "right",
   delay: 500,
 });
+
+// Why Different Section (Sequential reveal on scroll)
+ScrollReveal().reveal(
+  ".section-title[data-scroll-reveal='why-different-title']",
+  { ...scrollRevealOption, origin: "top", delay: 200 }
+);
+ScrollReveal().reveal(
+  ".section-subtitle[data-scroll-reveal='why-different-subtitle']",
+  { ...scrollRevealOption, origin: "top", delay: 300 }
+);
+ScrollReveal().reveal(".why-different-card:nth-child(1)", {
+  ...scrollRevealOption,
+  origin: "left",
+  delay: 400,
+});
+ScrollReveal().reveal(".why-different-card:nth-child(2)", {
+  ...scrollRevealOption,
+  origin: "bottom",
+  delay: 500,
+});
+ScrollReveal().reveal(".why-different-card:nth-child(3)", {
+  ...scrollRevealOption,
+  origin: "right",
+  delay: 600,
+});
+ScrollReveal().reveal(".why-different-card:nth-child(4)", {
+  ...scrollRevealOption,
+  origin: "bottom",
+  delay: 700,
+});
+ScrollReveal().reveal(".why-different-image", {
+  ...scrollRevealOption,
+  origin: "right",
+  delay: 500,
+});
