@@ -178,3 +178,19 @@ ScrollReveal().reveal(".why-different-image", {
   origin: "right",
   delay: 500,
 });
+
+// News & Offers Section (Reveal title and then columns)
+ScrollReveal().reveal(
+  ".section-title[data-scroll-reveal='news-offers-title']",
+  { ...scrollRevealOption, origin: "top", delay: 200 }
+);
+ScrollReveal().reveal(".news-column", {
+  ...scrollRevealOption,
+  origin: "left",
+  delay: 400,
+});
+ScrollReveal().reveal(".offers-column", {
+  ...scrollRevealOption,
+  origin: "right",
+  delay: 500,
+});
