@@ -8,17 +8,16 @@ if (hamburgerBtn && navLinks) {
   });
 }
 
-// Scroll Reveal Animations Configuration
 const scrollRevealOption = {
-  distance: "50px", // Adjust distance as needed
-  origin: "bottom", // Default origin
-  duration: 700, // Adjust duration as needed
-  delay: 200, // Base delay
+  distance: "50px",
+  origin: "bottom",
+  duration: 700,
+  delay: 200,
   easing: "cubic-bezier(0.5, 0, 0, 1)",
-  reset: false, // Keep animation on subsequent views if set to true
+  reset: false,
 };
 
-// Hero Section (Initial Load Animation)
+// Hero Section
 ScrollReveal().reveal(".hero-image img", {
   ...scrollRevealOption,
   origin: "right",
@@ -30,7 +29,7 @@ ScrollReveal().reveal(".hero-content", {
   delay: 400,
 });
 
-// Featured Creations Section (Staggered reveal on scroll)
+// Featured Creations Section
 ScrollReveal().reveal(".section-title[data-scroll-reveal='featured-title']", {
   ...scrollRevealOption,
   origin: "top",
@@ -53,14 +52,13 @@ ScrollReveal().reveal(".featured-card:nth-child(3)", {
   delay: 600,
 });
 
-// Build Your Dream Burger Section (Staggered reveal on scroll)
+// Build Your Dream Burger Section
 document.addEventListener("DOMContentLoaded", () => {
   const ingredientInputs = document.querySelectorAll(
     '.build-options-grid input[type="radio"], .build-options-grid input[type="checkbox"]'
   );
   const previewArea = document.querySelector(".preview-area");
   const selectedIngredients = {};
-
   function updateBurgerPreview() {
     let previewText = "Your Dream Burger: ";
     const selectedBreads = document.querySelector(
@@ -94,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       previewArea.textContent = previewText.replace(/,\s*$/, "");
     }
-    console.log("Selected Ingredients:", selectedIngredients);
   }
 
   if (ingredientInputs && previewArea) {
@@ -144,7 +141,7 @@ ScrollReveal().reveal(".build-preview", {
   delay: 500,
 });
 
-// Why Different Section (Sequential reveal on scroll)
+// Why Different Section
 ScrollReveal().reveal(
   ".section-title[data-scroll-reveal='why-different-title']",
   { ...scrollRevealOption, origin: "top", delay: 200 }
@@ -179,7 +176,7 @@ ScrollReveal().reveal(".why-different-image", {
   delay: 500,
 });
 
-// News & Offers Section (Reveal title and then columns)
+// News & Offers Section
 ScrollReveal().reveal(
   ".section-title[data-scroll-reveal='news-offers-title']",
   { ...scrollRevealOption, origin: "top", delay: 200 }
@@ -195,7 +192,7 @@ ScrollReveal().reveal(".offers-column", {
   delay: 500,
 });
 
-// About Us Section (Reveal title and then content/image)
+// About Us Section
 ScrollReveal().reveal(".section-title[data-scroll-reveal='about-title']", {
   ...scrollRevealOption,
   origin: "top",
@@ -218,3 +215,66 @@ ScrollReveal().reveal(".cta-content", {
   scale: 0.9,
   delay: 300,
 });
+
+// Footer
+ScrollReveal().reveal(".footer-grid > div:nth-child(1)", {
+  ...scrollRevealOption,
+  delay: 200,
+});
+ScrollReveal().reveal(".footer-grid > div:nth-child(2)", {
+  ...scrollRevealOption,
+  delay: 300,
+});
+ScrollReveal().reveal(".footer-grid > div:nth-child(3)", {
+  ...scrollRevealOption,
+  delay: 400,
+});
+ScrollReveal().reveal(".footer-grid > div:nth-child(4)", {
+  ...scrollRevealOption,
+  delay: 500,
+});
+ScrollReveal().reveal(".footer-copyright", {
+  ...scrollRevealOption,
+  delay: 600,
+});
+
+// Build Your Dream Burger
+const ingredientInputs = document.querySelectorAll(
+  '.build-options input[type="radio"], .build-options input[type="checkbox"]'
+);
+const previewArea = document.querySelector(".preview-area");
+
+if (ingredientInputs && previewArea) {
+  ingredientInputs.forEach((input) => {
+    input.addEventListener("change", updateBurgerPreview);
+  });
+
+  function updateBurgerPreview() {
+    let previewText = "Your Dream Burger: ";
+    const selectedBreads = document.querySelector(
+      'input[name="bread"]:checked'
+    );
+    const selectedPatty = document.querySelector('input[name="patty"]:checked');
+    const selectedCheeses = Array.from(
+      document.querySelectorAll('input[name="cheese"]:checked')
+    ).map((cb) => cb.value);
+    const selectedToppings = Array.from(
+      document.querySelectorAll('input[name="topping"]:checked')
+    ).map((cb) => cb.value);
+    const selectedSauce = document.querySelector('input[name="sauce"]:checked');
+
+    if (selectedBreads) previewText += selectedBreads.value + " bun, ";
+    if (selectedPatty) previewText += selectedPatty.value + " patty, ";
+    if (selectedCheeses.length > 0)
+      previewText += selectedCheeses.join(", ") + ", ";
+    if (selectedToppings.length > 0)
+      previewText += selectedToppings.join(", ") + ", ";
+    if (selectedSauce) previewText += selectedSauce.value + " sauce";
+
+    if (previewText === "Your Dream Burger: ") {
+      previewArea.textContent = "Select your ingredients above!";
+    } else {
+      previewArea.textContent = previewText.replace(/,\s*$/, "");
+    }
+  }
+}
