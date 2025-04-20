@@ -189,3 +189,47 @@ a:hover {
   color: var(--secondary-color);
   cursor: pointer;
 }
+
+/* Hero Section */
+.hero-section {
+  padding: 100px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  padding: 0 20px;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.hero-content {
+  text-align: left;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.hero-buttons a {
+  margin-right: 15px;
+}
+
+.hero-buttons a:last-child {
+  margin-right: 0;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
