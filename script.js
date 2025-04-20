@@ -29,3 +29,26 @@ ScrollReveal().reveal(".hero-content", {
   origin: "left",
   delay: 400,
 });
+
+// Featured Creations Section (Staggered reveal on scroll)
+ScrollReveal().reveal(".section-title[data-scroll-reveal='featured-title']", {
+  ...scrollRevealOption,
+  origin: "top",
+  delay: 200,
+});
+ScrollReveal().reveal(
+  ".section-subtitle[data-scroll-reveal='featured-subtitle']",
+  { ...scrollRevealOption, origin: "top", delay: 300 }
+);
+ScrollReveal().reveal(".featured-card:nth-child(1)", {
+  ...scrollRevealOption,
+  delay: 400,
+});
+ScrollReveal().reveal(".featured-card:nth-child(2)", {
+  ...scrollRevealOption,
+  delay: 500,
+});
+ScrollReveal().reveal(".featured-card:nth-child(3)", {
+  ...scrollRevealOption,
+  delay: 600,
+});
