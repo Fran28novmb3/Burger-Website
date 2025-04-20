@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Events - Unique Bites</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="events.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="container">
+        <div class="logo">
+          <a href="index.html">
+            <span class="logo-unique">Unique</span
+            ><span class="logo-bites">Bites</span>
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="specials.html">Today's Specials</a></li>
+          <li><a href="events.html" class="active">Our Events</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <div class="hamburger-menu" id="hamburger-btn">
+          <i class="ri-menu-line"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main class="events-page">
+      <section class="events-hero section-padding">
+        <div class="container">
+          <h1 class="events-title">Join the Fun at Our Events</h1>
+          <p class="events-subtitle">
+            Discover upcoming and past happenings at Unique Bites!
+          </p>
+          <div class="events-filter">
+            <button class="filter-btn active" data-filter="upcoming">
+              Upcoming Events
+            </button>
+            <button class="filter-btn" data-filter="past">Past Events</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="events-list section-padding">
+        <div class="container events-grid" id="events-grid"></div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="container footer-grid">
+        <div class="footer-logo">
+          <a href="index.html">
+            <span class="logo-unique">Unique</span
+            ><span class="logo-bites">Bites</span>
+          </a>
+          <p class="footer-slogan">
+            Your Destination for Unique Burger Experiences.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="specials.html">Today's Specials</a></li>
+            <li><a href="events.html">Our Events</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p><i class="ri-map-pin-line"></i> 123 Main Street, Zagazig, Egypt</p>
+          <p><i class="ri-phone-line"></i> +20 123 456 7890</p>
+          <p><i class="ri-mail-line"></i> info@uniquebites.com</p>
+        </div>
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#" target="_blank"><i class="ri-facebook-fill"></i></a>
+            <a href="#" target="_blank"><i class="ri-twitter-fill"></i></a>
+            <a href="#" target="_blank"><i class="ri-instagram-fill"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2025 Unique Bites. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="events.js"></script>
+  </body>
+</html>

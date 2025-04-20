@@ -567,3 +567,136 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   displaySpecials(todaySpecialsData);
 });
+
+// Events Page Script
+document.addEventListener("DOMContentLoaded", () => {
+  const eventsGrid = document.getElementById("events-grid");
+  const filterButtons = document.querySelectorAll(".events-filter .filter-btn");
+
+  // Sample events data (replace with your actual event data)
+  const allEventsData = [
+    {
+      id: 201,
+      name: "Live Acoustic Night",
+      date: "April 19, 2025",
+      time: "7:00 PM - 9:00 PM",
+      location: "Main Dining Area",
+      description:
+        "Enjoy a relaxing evening with live acoustic music while you dine.",
+      image: "assets/Events-images/food-2.jpg",
+      interested: 15,
+      status: "upcoming",
+    },
+    {
+      id: 202,
+      name: "Burger Workshop",
+      date: "April 26, 2025",
+      time: "2:00 PM - 4:00 PM",
+      location: "Back Kitchen Area",
+      description:
+        "Learn the secrets to crafting the perfect gourmet burger with our chef.",
+      image: "assets/Events-images/food-1.jpg",
+      interested: 28,
+      status: "upcoming",
+    },
+    {
+      id: 203,
+      name: "Customer Appreciation Day",
+      date: "April 05, 2025",
+      time: "All Day",
+      location: "All Areas",
+      description:
+        "Special discounts and giveaways to thank our loyal customers.",
+      image: "customer-appreciation-optimized.jpg",
+      interested: 45,
+      status: "past",
+    },
+    {
+      id: 204,
+      name: "Halloween Burger Bash",
+      date: "October 31, 2024",
+      time: "6:00 PM - 10:00 PM",
+      location: "Decorated Dining Area",
+      description: "A spooky night with themed burgers, costumes, and fun!",
+      image: "halloween-burger-optimized.jpg",
+      interested: 32,
+      status: "past",
+    },
+  ];
+
+  let currentEvents = allEventsData.filter(
+    (event) => event.status === "upcoming"
+  ); // Initial display
+
+  function displayEvents(events) {
+    eventsGrid.innerHTML = "";
+    if (events.length === 0) {
+      eventsGrid.innerHTML = "<p>No events to display.</p>";
+      return;
+    }
+    events.forEach((event) => {
+      const eventCard = document.createElement("div");
+      eventCard.classList.add("event-card");
+      eventCard.innerHTML = `
+                <div class="event-image-wrapper">
+                    <img src="${event.image}" alt="${event.name}">
+                </div>
+                <div class="event-details">
+                    <h3 class="event-name">${event.name}</h3>
+                    <p class="event-date-time"><i class="ri-calendar-line"></i> ${event.date} <i class="ri-time-line"></i> ${event.time}</p>
+                    <p class="event-location"><i class="ri-map-pin-line"></i> ${event.location}</p>
+                    <p class="event-description">${event.description}</p>
+                    <div class="event-actions">
+                        <button class="interest-button" data-event-id="${event.id}">
+                            <i class="ri-heart-line"></i> Interested
+                        </button>
+                        <span class="interested-count">${event.interested} people</span>
+                        <a href="#" class="view-details-link">View Details</a>
+                    </div>
+                </div>
+            `;
+      eventsGrid.appendChild(eventCard);
+    });
+    addInterestButtonListeners();
+  }
+
+  function filterEvents(status) {
+    currentEvents = allEventsData.filter((event) => event.status === status);
+    displayEvents(currentEvents);
+  }
+
+  function addInterestButtonListeners() {
+    const interestButtons = document.querySelectorAll(".interest-button");
+    interestButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const eventId = parseInt(this.dataset.eventId);
+        const event = allEventsData.find((e) => e.id === eventId);
+        if (event) {
+          event.interested++;
+          const interestedCountSpan = this.nextElementSibling;
+          if (
+            interestedCountSpan &&
+            interestedCountSpan.classList.contains("interested-count")
+          ) {
+            interestedCountSpan.textContent = `${event.interested} people`;
+          }
+          this.classList.add("interested");
+          this.disabled = true;
+          this.innerHTML = '<i class="ri-heart-fill"></i> Interested';
+        }
+      });
+    });
+  }
+
+  displayEvents(currentEvents);
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const filter = this.dataset.filter;
+      filterEvents(filter);
+
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      this.classList.add("active");
+    });
+  });
+});
