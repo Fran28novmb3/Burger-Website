@@ -194,3 +194,20 @@ ScrollReveal().reveal(".offers-column", {
   origin: "right",
   delay: 500,
 });
+
+// About Us Section (Reveal title and then content/image)
+ScrollReveal().reveal(".section-title[data-scroll-reveal='about-title']", {
+  ...scrollRevealOption,
+  origin: "top",
+  delay: 200,
+});
+ScrollReveal().reveal(".about-image", {
+  ...scrollRevealOption,
+  origin: "left",
+  delay: 400,
+});
+ScrollReveal().reveal(".about-content", {
+  ...scrollRevealOption,
+  origin: "right",
+  delay: 500,
+});

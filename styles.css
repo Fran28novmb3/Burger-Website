@@ -540,3 +540,44 @@ a:hover {
   gap: 5px;
   margin-bottom: 10px;
 }
+
+/* About Us Section */
+.about-us-section {
+  padding: 80px 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  padding: 0 20px;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-content h2 {
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.about-content .button {
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out; /* Added transition */
+}
+
+.about-content .button:hover {
+  transform: scale(1.03);
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
